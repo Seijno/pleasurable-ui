@@ -85,7 +85,7 @@ app.post("/stakeholder/:id", function (request, response) {
       "Content-type": "application/json; charset=UTF-8",
     },
   }).then((postReponse) => {
-
+    response.redirect(303, '/dashboard/' + request.params.id)
   });
   console.log(stakeholder);
 });
