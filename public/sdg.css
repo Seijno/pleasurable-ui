@@ -1,5 +1,32 @@
 /*telefoon versie*/
 /* form styling */
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+section  {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: row;
+    flex-wrap: wrap;
+    padding: 3.5em;
+    width: 100%;
+}
+
 .sdgMenu{
     display: flex;
     flex-flow: column nowrap;
