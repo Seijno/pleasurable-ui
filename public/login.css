@@ -1,12 +1,11 @@
+/* Dit is de stijling van de inputvelden voor login */
 
-/* Algemene stijling */
-/* main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column;
-} */
-
+.login {
+  border: 3px solid var(--Accentcolor);
+  padding: 3.575em;
+  border-radius: 1.375em;
+  width: 100%;
+  
 /* Show en filter worden in client-side scripting */
 .show{
   transform: translateX(0%);
@@ -20,9 +19,7 @@
   width: 25%;
   pointer-events: none;
 }
-/* Dit is het einde van de nav stijling
 
-/* Dit is de stijling van de inputvelden voor login */
 input[type="email"], input[type="password"] {
     width: 100%;
     padding: 10px;
@@ -68,11 +65,73 @@ input[type="email"], input[type="password"] {
     padding: .5em;
   }
 
-  .custom-select{
-    display: block;
-    width: 15rem;
-    background: var(--text);
-    margin: 0 auto;
+  /* mobiele weergave */
+  @media screen and (max-width: 480px) {
+    /* mobiel menu werkt naar behoren met knop*/
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+section  {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: row;
+    flex-wrap: wrap;
+    padding: 3.5em;
+    width: 100%;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.margin h2 {
+  letter-spacing: 3px;
+  text-align: left;
+}
+
+.login {
+  border: none;
+}
+
+select {
+  font-size: 1em;
+  width: 100%;
+}
+
+input[type="email"], input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--Accentcolor);
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+input[type='submit'] {
+  width: 100%;
+  padding: 0.5em;
+  font-family: halton, sans-serif;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: 2px solid var(--Accentcolor);
+  background-color: var(--BGcolor);
+  color: var(--TextColor);
+}
+
+input[type='submit']:hover {
+  background-color: var(--Secondarycolor);
+  color: var(--TextColor);
+  cursor: pointer; 
+
   }
   .loginBtn{
     display: block;

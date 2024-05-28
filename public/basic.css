@@ -64,113 +64,200 @@ p{
     text-align: center;
 }
 
-nav {
-    width: 300px;
+/* Stijling van nav en menuknop */
+.menu-button {
+    padding: .6em .6em .6em 1.2em;
+    border: 1px solid transparent;
+    border-radius: .5rem;
+    font-family: inherit;
+    font-size: inherit;
+    text-decoration: none;
+    color: var(--TextColor);
+    background: var(--PrimaryColor);
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 1.375em;
+    transition-duration: .5s;
+    display: grid;
+    grid-template-columns: max-content 1.3em;
+    gap: .4em;
+  }
+
+.line {
+    display: block;
+    width: .8em;
+    height: .12em;
+    background-color: currentColor;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    justify-self: center;
+    align-self: center;  
+    transition: .3s;
+}
+
+.line:nth-of-type(1) {
+    transform: translateY(-.3em);
+}
+
+button.open .line:nth-of-type(1) {
+    transform: rotate(45deg);
+}
+
+button.open .line:nth-of-type(2) {
+    transform: scaleX(0);
+}
+
+.line:nth-of-type(3) {
+    transform: translateY(.3em);
+}
+
+button.open .line:nth-of-type(3) {
+    transform: rotate(-45deg);
+}
+
+  .menu-button:focus-visible {
+    outline: 4px solid var(--Accentcolor);
+    padding: .5em;
+  }
+
+  .crossnav {
+    width: 500px;
     height: 100%;
     position: fixed;
-    transform: translateX(-100%);
-		transition: .2s;
     display: flex;
     flex-direction: column;
-    padding: 1.5em;
+    transform: translateX(-100%);
+    transition: .2s;
+    padding: 1.55em;
     z-index: 1;
     background-color: var(--PrimaryColor);
 }
 
-nav li {
+.crossnav li {
     list-style: none;
-    padding: 0.5em 0 1.5em 0; 
+    padding: 0.5em 1.5rem 1.5em 0; 
     width: 100%;
+    margin: .8rem;
 }
 
-nav li a{
+.crossnav li a{
     text-decoration: none;
     color: var(--TextColor);
-    padding: .8em;
+    background-color: var(--BGcolor);
+    border: 2px solid var(--a);
+    border-radius: 1.5em;
+    padding: 1.85em;
     width: 100%;
+    text-transform: capitalize;
+    display: block;
+    text-align: center;
 }
 
-nav li a:hover{
+.crossnav li a:hover{
     background-color: var(--Secondarycolor);
     color: var(--TextColor);
     font-size: 1em;
-    text-align: left;
+    text-align: center;
 }
 
-nav li a:active {
+.crossnav li a:active {
   background-color: var(--Accentcolor);
 }
 
-nav li a:focus-visible {
+.crossnav li a:focus-visible {
   outline: 4px solid var(--Accentcolor);
   background-color: var(--BGcolor);
   padding: .5em;
 }
-
-nav svg{
-    float: left;
-    cursor: pointer;   
-    margin-bottom: 1.5em;
-}
-
-/* Nav styling. Menu button zit in head.ejs */
-.menu-button {
-    position: absolute;
-    top: 1.5rem;
-    left: 0.5rem;
-    padding: .6em 1.2em;
-      border: 1px solid transparent;
-      border-radius: .5rem;
-      font-family: inherit;
-      font-size: inherit;
-      text-decoration: none;
-      color: var(--TextColor);
-      background: var(--PrimaryColor);
-      cursor: pointer;
-      font-size: 1.5rem;
-      background: var(--accent);
-
+.show{
+    transform: translateX(0%);
   }
   
-  .menu-button:focus-visible {
-    outline: 4px solid var(--text);
-    padding: .5em;
+.filter {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.296);
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
   }
+  /* Einde Stijling van nav en menuknop */
 
   /* mobiele weergave */
-@media screen and (max-width: 480px) {
-/* mobiel menu werkt naar behoren met knop*/
-    nav {
-      width: 100%;
-      height: auto;
-      position: fixed;
-      display: flex;
-      flex-direction: column;
-      padding: 1.5em;
-      z-index: 1;
-      background-color: var(--PrimaryColor);
+  @media screen and (max-width: 480px) {
+    /* mobiel menu werkt naar behoren met knop*/
+.menu-button {
+    padding: .6em 1.2em;
+    border: 1px solid transparent;
+    border-radius: .5rem;
+    font-family: inherit;
+    font-size: inherit;
+    text-decoration: none;
+    color: var(--TextColor);
+    background: var(--PrimaryColor);
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 1.375em;
+    transition-duration: .5s;
+    position: fixed;
+    z-index: 2;
     }
-  
-    nav li {
-      list-style: none;
-      padding: 0.5em 0 1.5em 0; 
+
+.menu-button:hover {
+    background-color: var(--accent);
     }
-  
-    nav li a{
-      text-decoration: none;
-      color: var(--TextColor);
-    }
-  
-    nav li a:hover{
-      background-color: var(--Secondarycolor);
-      padding: 0.5em;
-      color: var(--green);
-      font-size: 1.2em;
-      font-weight: bold;
-      width: 100%;
-    }
-  
-    nav:focus {
-    outline: 4px solid var(--Secondarycolor);
-    }
+
+.menu-button:focus-visible {
+    outline: 4px solid var(--Accentcolor);
+    padding: .5em;
 }
+    
+.crossnav {
+    width: 100%;
+    height: 80%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: .2s;
+    padding: 1.5em;
+    margin-top: 3.5em;
+    z-index: 1;
+    background-color: var(--PrimaryColor);
+  }
+  
+.crossnav li {
+    list-style: none;
+    padding: 0.5em 0 1.5em 0; 
+  }
+  
+.crossnav li a{
+    text-decoration: none;
+    color: var(--TextColor);
+  }
+  
+.crossnav li a:hover {
+    background-color: var(--Secondarycolor);
+    padding: 0.5em;
+    color: var(--green);
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 100%;
+  }
+
+.crossnav:focus {
+    outline: 4px solid var(--Secondarycolor);
+  }
+
+  .show{
+    transform: translateX(0%);
+  }
+  
+.filter {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.296);
+    height: 80%;
+    width: 80%;
+    pointer-events: none;
+  }
+}
+   /* Einde media query*/
