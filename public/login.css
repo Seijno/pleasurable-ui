@@ -1,11 +1,16 @@
 /* Dit is de stijling van de inputvelden voor login */
 
 .login {
-  border: 3px solid var(--Accentcolor);
-  padding: 3.575em;
+  border: 2px solid var(--accent);
+  padding: 5.575em;
+  margin-top: 25px;
   border-radius: 1.375em;
-  width: 100%;
-  
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /* Show en filter worden in client-side scripting */
 .show{
   transform: translateX(0%);
@@ -20,55 +25,60 @@
   pointer-events: none;
 }
 
+label {
+  color: var(--text);
+}
+
 input[type="email"], input[type="password"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid var(--Accentcolor);
+    margin-bottom: 30px;
+    border: 1px solid var(--accent);
     border-radius: 3px;
     box-sizing: border-box;
   }
   
-  input[type='submit'] {
-    width: 100%;
+ .loginBtn {
+    width: 50%;
     padding: 0.5em;
     font-family: halton, sans-serif;
     text-transform: uppercase;
     border-radius: 5px;
-    border: 2px solid var(--Accentcolor);
-    background-color: var(--BGcolor);
-    color: var(--TextColor);
+    border: 2px solid var(--accent);
+    background-color: var(--background);
+    color: var(--text);
   }
   
-  input[type='submit']:hover {
-    background-color: var(--Secondarycolor);
-    color: var(--TextColor);
+  .loginBtn:hover {
+    background-color: var(--subTitles);
+    color: var(--text);
     cursor: pointer;
   }
 
   input:focus-visible {
-    outline: 4px solid var(--Secondarycolor);
+    outline: 4px solid var(--subTitles);
     padding: .5em;
   }
 
  select {
     width: 50%;
     padding: .5em;
-    border: 2px solid var(--Accentcolor);
-    background-color: var(--PrimaryColor);
-    color: var(--TextColor);
+    margin-bottom: 30px;
+    border: 2px solid var(--accent);
+    background-color: var(--headTitles);
+    color: var(--text);
     font-size: 1em;
   }
 
   select:focus-visible {
-    outline: 4px solid var(--Secondarycolor);
+    outline: 4px solid var(--subTitles);
     padding: .5em;
   }
 
   /* mobiele weergave */
   @media screen and (max-width: 480px) {
     /* mobiel menu werkt naar behoren met knop*/
-}
+
 
 main {
     display: flex;
@@ -102,15 +112,20 @@ header{
   border: none;
 }
 
+label {
+color: var(--text);
+}
+
 select {
   font-size: 1em;
   width: 100%;
+  margin-bottom: 30px;
 }
 
 input[type="email"], input[type="password"] {
   width: 100%;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   border: 1px solid var(--Accentcolor);
   border-radius: 3px;
   box-sizing: border-box;
