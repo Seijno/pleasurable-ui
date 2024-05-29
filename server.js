@@ -4,7 +4,7 @@ import fetchJson from './helpers/fetch-json.js'
 const app = express(),
 apiUrl = 'https://fdnd-agency.directus.app/items/',
 scores = 'https://fdnd-agency.directus.app/items/hf_scores/?fields=*.*.*.*`',
-sdgData = await fetchJson(apiUrl + '/hf_sdgs'),
+sdgData = apiUrl + '/hf_sdgs',
 stakeholders = apiUrl + "hf_stakeholders?fields=*.*.*.*`",
 companyList = apiUrl + "hf_companies";
 
@@ -31,7 +31,7 @@ app.get("/dashboard/:id", function (request, response) {
   fetchJson(companyList + "/" + request.params.id).then((companyData) => {
     fetchJson(stakeholders + "/" + request.params.id).then((stakeholderData) => {
         fetchJson(scores + "/" + request.params.id).then((scoreData) => {
-          fetchJson(apiUrl + '/hf_sdgs').then((sdgData) =>{
+          fetchJson(sdgData).then((sdgData) =>{
         response.render("dashboard", {
           company: companyData.data,
           stakers: stakeholderData.data,
