@@ -3,10 +3,11 @@ import fetchJson from './helpers/fetch-json.js'
 
 const app = express(),
 apiUrl = 'https://fdnd-agency.directus.app/items/',
-scores = 'https://fdnd-agency.directus.app/items/hf_scores/?filter[stakeholder_id]=6',
+scores = 'https://fdnd-agency.directus.app/items/hf_scores/?fields=*.*.*.*`',
 sdgData = await fetchJson(apiUrl + '/hf_sdgs'),
 stakeholders = apiUrl + "hf_stakeholders?fields=*.*.*.*`",
 companyList = apiUrl + "hf_companies";
+
 
 app.set('view engine', 'ejs')
 app.set('views', './views')
@@ -28,16 +29,21 @@ app.get('/', function(request, response) {
 app.get("/dashboard/:id", function (request, response) {
   // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
   fetchJson(companyList + "/" + request.params.id).then((companyData) => {
-    fetchJson(stakeholders + "/" + request.params.id).then(
-      (stakeholderData) => {
+    fetchJson(stakeholders + "/" + request.params.id).then((stakeholderData) => {
+        fetchJson(scores + "/" + request.params.id).then((scoreData) => {
+          fetchJson(apiUrl + '/hf_sdgs').then((sdgData) =>{
         response.render("dashboard", {
           company: companyData.data,
           stakers: stakeholderData.data,
+          scores: scoreData.data,
+          sdgs: sdgData.data
         })
-      }
+        })})
+    }
     );
-  });
 });
+});
+
 app.get("/stakeholder/:id", function (request, response) {
   // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
   fetchJson(companyList + "/" + request.params.id).then((companyData) => {

@@ -1,12 +1,11 @@
-<link rel="stylesheet" href="/dashboard.css" />
-<%- include('./partials/head') %>
-
+<%- include('./partials/headdash.ejs') %>
 <div class="dashboard">
-  <div>
-    <div class="introductie">
-      <h1>Welkom bij uw dashboard!</h1>
-    </div>
+  <section>
+  <div class="flex">
+  <h1>Welkom <%= company.name %> !</h1>
   </div>
+<hr>
+</section>
   <header class="menu-wrap">
     <figure class="user">
       <div class="user-avatar">
@@ -44,7 +43,7 @@
                   fill="#fff"
                 />
               </svg>
-              <h3>Stakeholder toevoegen</h3>
+              Stakeholder toevoegen
             </a>
           </li>
         </ul>
@@ -52,7 +51,8 @@
       <section class="tools">
         <h3>Uw stakeholders</h3>
         <ul>
-          <% stakers.forEach(stake => { if (stake.company_id.id === company.id) { %>
+          <% stakers.forEach(stake => { if (stake.company_id.id === company.id)
+          { %>
           <li>
             <a class="toolbox" href="/score">
               <%= stake.name%> - <%=stake.type%>
@@ -61,40 +61,75 @@
           <% } }) %>
         </ul>
       </section>
+      <div class="flex kaas">
+      <h3>Klas 1F</h3>
+    </div>
     </nav>
   </header>
   <!-- Midden van Dashboard -->
   <main class="content-wrap">
-    <section>
-      <div class="parent">
-        <div class="hand-print">
-          <img
-            loading="lazy"
-            src="/assets/handprint.png"
-            width="300px"
-            height="300px"
-            alt="Handafdruk"
-          />
-          <H1>50%</H1>
-        </div>
-        <div class="inside-parent">
-          <div class="handprint-inside"></div>
-          <div class="footprint-inside"></div>
-          <div class="handprint-inside"></div>
-          <div class="footprint-inside"></div>
-        </div>
-        <div class="foot-print">
-          <img
-            loading="lazy"
-            src="/assets/footprint.png"
-            width="300px"
-            height="300px"
-            alt="Voetafdruk"
-          />
-          <h1>50%</h1>
-        </div>
+    <section class="scores">
+      <div class="handprint">
+        <img
+          loading="lazy"
+          src="/assets/handprint.png"
+          width="300px"
+          height="300px"
+          alt="Handafdruk"
+        />
+      </div>
+      <div class="footprint">
+        <img
+          loading="lazy"
+          src="/assets/footprint.png"
+          width="300px"
+          height="300px"
+          alt="Voetafdruk"
+        />
       </div>
     </section>
+    <section class="sdg-carrousel">
+      <ul class="carrousel-list">
+        <% stakers.forEach(stake => { if (stake.company_id.id === company.id) { %>
+          <li class="carrousel-item">
+            <div class="card">
+              <h2><%= stake.name %></h2>
+              <% let sdgFound = false; %>
+              <% scores.forEach(score => { 
+                if (!sdgFound && score.stakeholder_id.id === stake.id) { 
+                  if (score.score == 1) { %>
+                    <p style="color: lightgreen;">Je score is positief op deze SDG, namelijk: <%= score.score %>!</p>
+                  <% } else if (score.score < 0) { %>
+                    <p style="color: red;">Je score is negatief op deze SDG, namelijk: <%= score.score %>!</p>
+                    <% } else if (score.score >= 2) { %>
+                      <p style="color: green;">Je score is positief op deze SDG, namelijk: <%= score.score %>!</p>
+                  <% } else { %>
+                    <p style="color: orange;">Je score is neutraal op deze SDG, namelijk: <%= score.score %>!</p>
+                  <% }
+                  sdgs.forEach(sdg => { 
+                    if (!sdgFound && score.sdg_id.id === sdg.id) { 
+                      sdgFound = true; %>
+                      <picture>
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%= sdg.icon %>?format=avif" type="image/avif">
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%= sdg.icon %>?format=webp" type="image/webp">
+                        <img src="https://fdnd-agency.directus.app/assets/<%= sdg.icon %>" height="112" width="112" value="<%= sdg.id %>" alt="<%= sdg.title %>">
+                      </picture>
+                     <h2> <%= sdg.title %></h2>
+                  <% } }); %>
+
+                <% } 
+              }); %>
+
+            </div>
+          </li>
+        <% } }); %>
+        
+      
+          </div>
+        </li>
+
+      </ul>
+    </section>
   </main>
+  <%- include('./partials/foot') %>
 </div>
-<%- include('./partials/foot') %>
