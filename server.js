@@ -3,8 +3,8 @@ import fetchJson from './helpers/fetch-json.js'
 
 const app = express(),
 apiUrl = 'https://fdnd-agency.directus.app/items/',
-scores = 'https://fdnd-agency.directus.app/items/hf_scores/?fields=*.*.*.*`',
-sdgData = apiUrl + '/hf_sdgs',
+scores = apiUrl + 'hf_scores/?fields=*.*.*.*`',
+sdgData = apiUrl + 'hf_sdgs',
 stakeholders = apiUrl + "hf_stakeholders?fields=*.*.*.*`",
 companyList = apiUrl + "hf_companies";
 
