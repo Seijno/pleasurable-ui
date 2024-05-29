@@ -1,11 +1,16 @@
 /* Dit is de stijling van de inputvelden voor login */
+.inlog {
+  display: flex;
+  justify-content: center;
+}
+
 
 .login {
   border: 2px solid var(--accent);
   padding: 5.575em;
   margin-top: 25px;
   border-radius: 1.375em;
-  width: 90%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
