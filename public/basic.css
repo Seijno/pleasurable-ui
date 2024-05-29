@@ -54,6 +54,8 @@ p{
   display: grid;
   grid-template-columns: max-content 1.3em;
   gap: .4em;
+  top: 3rem;
+  position: fixed;
 }
 
 .line {
@@ -110,7 +112,7 @@ button.open .line:nth-of-type(3) {
   list-style: none;
   padding: 0.5em 1.5rem 1.5em 0; 
   width: 100%;
-  margin: .8rem;
+  margin-bottom: 2rem;
 }
 
 .crossnav li a{
