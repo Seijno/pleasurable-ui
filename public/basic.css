@@ -112,7 +112,7 @@ button.open .line:nth-of-type(3) {
   list-style: none;
   padding: 0.5em 1.5rem 1.5em 0; 
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .crossnav li a{
